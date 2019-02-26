@@ -79,12 +79,6 @@ public class Student {
         this.courses = courses;
     }
 
-    public void addCourses(Course myCourse){
-        if (courses == null){
-            courses = new ArrayList<>();
-        }
-        courses.add(myCourse);
-    }
 
     @Override
     public String toString() {
