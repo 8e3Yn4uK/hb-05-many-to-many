@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class AddCoursesDemo {
+public class GetCoursesDemo {
 
     public static void main(String[] args) {
 
@@ -26,15 +26,8 @@ public class AddCoursesDemo {
             session.beginTransaction();
             int studentId = 2;
             Student tempStudent = session.get(Student.class, studentId);
-            System.out.println("\nLoad student: " + tempStudent);
+            System.out.println("\nLoaded student: " + tempStudent);
             System.out.println("Courses: " + tempStudent.getCourses());
-            Course tempCourse1 = new Course("How to build a house");
-            Course tempCourse2 = new Course("How to repair a car");
-            tempCourse1.addStudent(tempStudent);
-            tempCourse2.addStudent(tempStudent);
-            System.out.println("\nSaving the courses ...");
-            session.save(tempCourse1);
-            session.save(tempCourse2);
             session.getTransaction().commit();
 
         } catch (Exception exc){
