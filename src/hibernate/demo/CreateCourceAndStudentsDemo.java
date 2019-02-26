@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class CreateCourceAndReviewsDemo {
+public class CreateCourceAndStudentsDemo {
 
     public static void main(String[] args) {
 
@@ -24,17 +24,18 @@ public class CreateCourceAndReviewsDemo {
         try {
 
             session.beginTransaction();
-
-            Course tempCourse = new Course("Spring for beginners");
-
-            tempCourse.addReview(new Review("not bad"));
-
-            tempCourse.addReview(new Review("Great!!!"));
-
-            tempCourse.addReview(new Review("not so bad"));
-
+            Course tempCourse = new Course("Guitar tutorials");
+            System.out.println("\nSaving the course...");
             session.save(tempCourse);
-
+            System.out.println("Saved the course: " + tempCourse);
+            Student tempStudent1 = new Student("Will", "Smith", "smith@gmail.com");
+            Student tempStudent2 = new Student("Rafa", "Benites", "newcastle@gmail.com");
+            tempCourse.addStudent(tempStudent1);
+            tempCourse.addStudent(tempStudent2);
+            System.out.println("\nSaving students...");
+            session.save(tempStudent1);
+            session.save(tempStudent2);
+            System.out.println("Saved students: " + tempCourse.getStudents());
             session.getTransaction().commit();
 
         } catch (Exception exc){
